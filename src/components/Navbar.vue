@@ -16,7 +16,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li><router-link to="/posts">All Post</router-link></li>
-          <li><router-link to="/posts/add">Post Now</router-link></li>
+          <li><router-link to="/cant-share">Post Now</router-link></li>
         </ul>
       </div>
     </div>
