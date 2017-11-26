@@ -3,6 +3,7 @@ import App from './App.vue'
 import { store } from './store'
 import VueRouter from 'vue-router'
 
+import CantShare from './components/CantShare.vue';
 import AllArticles from './components/AllArticles.vue';
 import SingleArticle from './components/SingleArticle.vue';
 
@@ -11,6 +12,7 @@ const routes = [
   { path: '/', component: AllArticles},
   { path: '/posts', component: AllArticles},
   { path: '/posts/:postId', component: SingleArticle},
+  { path: '/cant-share', component: CantShare},
   { path: '*', component: { template: '<h1>Page not found</h1>'}}
 ];
 
