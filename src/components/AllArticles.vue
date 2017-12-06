@@ -18,16 +18,17 @@
 </template>
 
 <script>
-	
+	import {mapGetters, mapActions} from 'vuex'
 	export default{
 		created: function () {
 		    this.$store.dispatch('posts');
 		 },
 		computed: {
-    		posts(){
-    			return this.$store.getters.posts;
-    		}
-		}
+    		...mapGetters(['posts'])
+		},
+		methods:{
+		    ...mapActions(['posts'])
+		},
 	}
 </script>
 

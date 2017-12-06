@@ -20,21 +20,23 @@
 </template>
 
 <script>
-	
+	import {mapGetters, mapActions} from 'vuex'
 	export default{
+		data(){
+		    return {
+		        id: this.$route.params.postId
+		    }
+		},
 		created: function () {
-			var id = this.$route.params.postId
-		    this.$store.dispatch('post',id);
-		    this.$store.dispatch('comments',id);
-		 },
+		    this.$store.dispatch('post',this.id);
+		    this.$store.dispatch('comments',this.id);
+		},
 		computed: {
-    		post(){
-    			return this.$store.getters.post;
-    		},
-    		comments(){
-    			return this.$store.getters.comments;
-    		}
-		}
+    		...mapGetters(['comments','post'])
+		},
+		methods:{
+		    ...mapActions(['post','comments'])
+		},
 	}
 </script>
 

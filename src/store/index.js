@@ -23,6 +23,7 @@ export const store = new Vuex.Store({
 			return state.comments
 		},
 	},
+	
 	mutations:{
 		posts:(state,payload)=>{
 			state.posts = payload;
@@ -45,26 +46,26 @@ export const store = new Vuex.Store({
 				});
 			},
 
-			post:(context,id)=>{	
-				axios.get(`http://jsonplaceholder.typicode.com/posts/`+id)
-					.then(function (response) {
-						//console.log(response.data)
-						context.commit('post',response.data);
-					})
-					.catch(function (error) {
-						console.log('errror pos: ' +error);
-					});
-				},
+		post:(context,id)=>{	
+			axios.get(`http://jsonplaceholder.typicode.com/posts/`+id)
+				.then(function (response) {
+					//console.log(response.data)
+					context.commit('post',response.data);
+				})
+				.catch(function (error) {
+					console.log('errror pos: ' +error);
+				});
+			},
 
-			comments:(context,id)=>{	
-				axios.get(`http://jsonplaceholder.typicode.com/comments?postId=`+id)
-					.then(function (response) {
-						console.log(response.data)
-						context.commit('comments',response.data);
-					})
-					.catch(function (error) {
-						console.log('errror com: ' +error);
-					});
-				}
-		}
+		comments:(context,id)=>{	
+			axios.get(`http://jsonplaceholder.typicode.com/comments?postId=`+id)
+				.then(function (response) {
+					console.log(response.data)
+					context.commit('comments',response.data);
+				})
+				.catch(function (error) {
+					console.log('errror com: ' +error);
+				});
+			}
+	}
 })
