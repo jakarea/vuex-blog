@@ -5,12 +5,12 @@
 				<form>
 				  <div class="form-group">
 				    <label for="title">Post Title</label>
-				    <input type="text" class="form-control" id="title" ref="title" placeholder="Enter title">
+				    <input type="text" class="form-control" id="title" placeholder="Enter title" v-model="title">
 				    
 				  </div>
 				  <div class="form-group">
 				   <label for="body">Body</label>
-					<textarea class="form-control" id="body" ref="body" rows="3"></textarea>
+					<textarea class="form-control" id="body" v-model="body" rows="3"></textarea>
 				  </div>
 				  <button type="submit" class="btn btn-primary" @click.prevent="getFormValues()">Submit</button>
 				</form>
@@ -23,6 +23,13 @@
 <script>
 	import axios from 'axios';
 	export default{
+		data(){
+		    return {
+		        title: '',
+		        body: '',
+		    }
+		},
+
 		created: function () {
 		    this.$store.dispatch('posts');
 		 },
@@ -33,8 +40,8 @@
 		},
 		methods: {
 		    getFormValues () {
-		      var title = this.$refs.title.value;
-		      var body = this.$refs.body.value;
+		      var title = this.title;
+		      var body = this.body;
 		      axios.post('http://jsonplaceholder.typicode.com/posts/', {
 			    title: title,
 			    body: body,

@@ -2,6 +2,15 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
+				<form>
+				  <div class="form-group col-md-5 col-md-offset-6">
+				    <input type="text" class="form-control" id="title" placeholder="Search..." @keyup="searchPost" v-model="search">
+				  </div>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
 				<div id="articles">
 					<h2 style="text:center"> All Articles</h2>
 					<div class="article" v-for="post in posts">
@@ -20,15 +29,23 @@
 <script>
 	import {mapGetters, mapActions} from 'vuex'
 	export default{
+		data(){
+		    return {
+		        search:''
+		    }
+		},
 		created: function () {
 		    this.$store.dispatch('posts');
 		 },
 		computed: {
     		...mapGetters(['posts'])
 		},
-		methods:{
-		    ...mapActions(['posts'])
-		},
+		 methods:{
+		    /*...mapActions(['searchPost'])*/
+		    searchPost(){
+		    console.log(this.posts.push(''));
+		    }
+		}, 
 	}
 </script>
 

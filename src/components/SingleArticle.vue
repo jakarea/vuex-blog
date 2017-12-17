@@ -34,9 +34,9 @@
 		computed: {
     		...mapGetters(['comments','post'])
 		},
-		methods:{
+		/*methods:{
 		    ...mapActions(['post','comments'])
-		},
+		},*/
 	}
 </script>
 

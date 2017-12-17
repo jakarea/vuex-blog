@@ -22,6 +22,9 @@ export const store = new Vuex.Store({
 		comments : state =>{
 			return state.comments
 		},
+		alert : ()=>{
+			alert('g');
+		}
 	},
 	
 	mutations:{
@@ -33,6 +36,9 @@ export const store = new Vuex.Store({
 		},
 		comments:(state,payload)=>{
 			state.comments = payload;
+		},
+		alert : ()=>{
+			alert('m');
 		}
 	},
 	actions:{
@@ -66,6 +72,9 @@ export const store = new Vuex.Store({
 				.catch(function (error) {
 					console.log('errror com: ' +error);
 				});
+			},
+			searchPost : ()=>{
+				console.log(this.state.posts);
 			}
 	}
 })
