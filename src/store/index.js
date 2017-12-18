@@ -22,11 +22,13 @@ export const store = new Vuex.Store({
 		comments : state =>{
 			return state.comments
 		},
-		alert : ()=>{
-			alert('g');
-		}
+		search(state) {
+      return keyword => state.posts.filter(post =>{
+        return post.title.toLowerCase().includes(keyword.toLowerCase())
+      });
+    }
 	},
-	
+
 	mutations:{
 		posts:(state,payload)=>{
 			state.posts = payload;
@@ -37,9 +39,12 @@ export const store = new Vuex.Store({
 		comments:(state,payload)=>{
 			state.comments = payload;
 		},
-		alert : ()=>{
-			alert('m');
-		}
+		// searchPost:(state,keyword)=>{
+		// 	state.posts = state.posts.filter(post => {
+		// 		console.log(keyword);
+    //     return post.title.toLowerCase().includes(keyword.toLowerCase())
+    //   })
+		// },
 	},
 	actions:{
 		posts:context=>{
@@ -52,7 +57,7 @@ export const store = new Vuex.Store({
 				});
 			},
 
-		post:(context,id)=>{	
+		post:(context,id)=>{
 			axios.get(`http://jsonplaceholder.typicode.com/posts/`+id)
 				.then(function (response) {
 					//console.log(response.data)
@@ -63,7 +68,7 @@ export const store = new Vuex.Store({
 				});
 			},
 
-		comments:(context,id)=>{	
+		comments:(context,id)=>{
 			axios.get(`http://jsonplaceholder.typicode.com/comments?postId=`+id)
 				.then(function (response) {
 					console.log(response.data)
@@ -73,8 +78,8 @@ export const store = new Vuex.Store({
 					console.log('errror com: ' +error);
 				});
 			},
-			searchPost : ()=>{
-				console.log(this.state.posts);
+			searchPost : (context,payload)=>{
+				context.commit('searchPost',payload);
 			}
 	}
 })

@@ -8,7 +8,7 @@
 						<div class="title">{{ post.title }}</div>
 						<div class="body">{{ post.body }}</div>
 					</div>
-		
+
 					<div class="comments">Comments</div>
 					<div class="comment" v-for="comment in comments">
 						<div class="body">{{ comment.body }}</div>
@@ -55,4 +55,4 @@
     font-weight: 700;
     padding-top: 20px;
 }
-</style>	
+</style>
