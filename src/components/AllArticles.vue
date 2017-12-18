@@ -14,11 +14,13 @@
 				<div id="articles">
 					<h2 style="text:center"> All Articles</h2>
 					<div class="article" v-for="post in posts">
-						<div class="title"><router-link :to="'/posts/'+ post.id">{{ post.title }}</router-link></div>
-						<div class="body">{{ post.body }}</div>
-						<div class="link">
-							<router-link :to="'/posts/'+ post.id">Read More</router-link>
-						</div>
+						<transition name="fade">
+							<div class="title"><router-link :to="'/posts/'+ post.id">{{ post.title }}</router-link></div>
+							<div class="body">{{ post.body }}</div>
+							<div class="link">
+								<router-link :to="'/posts/'+ post.id">Read More</router-link>
+							</div>
+					</transition>
 					</div>
 				</div>
 			</div>
